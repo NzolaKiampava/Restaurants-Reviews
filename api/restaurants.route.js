@@ -1,15 +1,17 @@
-import express from "express";
-import RestaurantsCtrl from "./restaurants.controller.js";
-import ReviewsCtrl from "./reviews.controller.js";
+import express from "express"
+import RestaurantsCtrl from "./restaurants.controller.js"
+import ReviewsCtrl from "./reviews.controller.js"
 
-const router = express.Router()
+const router = express.Router()    //accessing the route file
 
-router.route("/").get(RestaurantsCtrl.apiGetRestaurants)
+router.route("/").get(RestaurantsCtrl.apiGetRestaurants)   //go to RestaurantsCrtl in method apiGetRestaurants
+router.route("/id/:id").get(RestaurantsCtrl.apiGetRestaurantById)
+router.route("/cuisines").get(RestaurantsCtrl.apiGetRestaurantCuisines)
 
 router
-    .route("/review")                     //route
-    .post(ReviewsCtrl.apiPostReview)     //insert
-    .put(ReviewsCtrl.apiUpdateReview)     //update
-    .delete(ReviewsCtrl.apiDeleteReview)  //delete
+    .route("/review")
+    .post(ReviewsCtrl.apiPostReview)     //post review
+    .put(ReviewsCtrl.apiUpdateReview)    //edit or update review
+    .delete(ReviewsCtrl.apiDeleteReview) //delete review
 
-export default router
+export default router 
